@@ -8,6 +8,8 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaWhatsapp  } from "react-icons/fa";
 
 
+
+
 interface Contato {
   nome: string;
   mensagem: string;
@@ -21,11 +23,12 @@ const Home = () => {
   // atualizar as dimensões da tela
   useEffect(() => {
     setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth )
+    console.log(width)
   }, [])
 
 
   return (
-    <main className=" bg-black">
+    <div className=" bg-black">
       <section id="home" className="flex justify-center relative w-full">
         <motion.img initial={{opacity: 0}} animate={{opacity: 2}} transition={{duration: 1}} src="perfil 1.png" alt="Imagem com um rosto" className="mix-blend-hard-light h-screen  max-w-full"/>
         <div className="absolute top-0 w-full h-full ">
@@ -44,15 +47,15 @@ const Home = () => {
         </div>
       </section>
       <section id="sobre" className="flex flex-col w-full items-center">
-        <div className="flex justify-center bg-white">
-          <div className="flex items-center w-3/4 ">
-            <motion.div initial={{x: -200}} animate={{x: 0}} transition={{duration: 1}} className="flex flex-col bg-white w-full items-center p-4 ">
-              <h2 className="text-4xl">OBJETIVO</h2>
-              <p className="w-full text-3xl mt-4 text-center"><em className="text-bluetec text-4xl">R</em>ealizar projetos incríveis, aproveitando o melhor que a tecnologia pode oferecer para o usuário.</p>
+        <div className="flex justify-center bg-white py-8 bg-about-image bg-cover">
+          <div className="flex flex-col-reverse items-center gap-6 w-3/4 ">
+            <motion.div initial={{x: -200}} animate={{x: 0}} transition={{duration: 1}} className="flex flex-col w-full items-center h-full ">
+              <h2 className="text-4xl ">OBJETIVO</h2>
+              <p className="w-full text-3xl mt-2 text-center text-justify"><em className="text-bluetec text-4xl">M</em>eu objetivo é contribuir significativamente para o desenvolvimento de projetos inovadores. Quero fazer parte de equipes que compartilhem uma visão audaciosa e trabalhem incansavelmente para transformar ideias em produtos digitais impactantes. Estou preparado para assumir responsabilidades desafiadoras e colaborar ativamente no ciclo completo de desenvolvimento de software..</p>
             </motion.div>
-            <motion.div initial={{x: -200}} animate={{x: 0}} transition={{duration: 1}} className="flex flex-col justify-between w-full items-center p-4 bg-white">
-              <h2 className="text-4xl">SOBRE</h2>
-              <p className="w-full text-3xl mt-4 text-center">Figma ipsum component variant main layer. Horizontal main scale export content. Layer bullet inspect duplicate content rotate.</p>
+            <motion.div initial={{x: -200}} animate={{x: 0}} transition={{duration: 1}} className="flex flex-col w-full items-center h-full">
+              <h2 className="text-4xl mt-4">SOBRE</h2>
+              <p className="w-full text-3xl mt-2 text-center text-justify"><em className="text-bluetec text-4xl">E</em>stou animado para explorar novas oportunidades e contribuir para projetos desafiadores. Se você está em busca de um desenvolvedor apaixonado e comprometido, estou pronto para fazer parte da sua equipe. Entre em contato para discutir como podemos transformar suas ideias em realidade digital.</p>
             </motion.div>
           </div>
         </div>  
@@ -90,7 +93,7 @@ const Home = () => {
         </div>
       </section>
 
-    </main>
+    </div>
   )
 }
 

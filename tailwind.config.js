@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'about-image': "url('src/assets/img/fundo_futurista.jpg')",
+      },
+    },
     colors: {
       darkgray: '#494949',
       bluetec: '#2E8EFF',
