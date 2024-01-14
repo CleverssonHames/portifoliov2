@@ -10,6 +10,7 @@ export default {
       darkgray: '#494949',
       bluetec: '#2E8EFF',
       white: '#ffffff',
+      black: '#000000',
     },
   },
   plugins: [],

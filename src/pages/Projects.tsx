@@ -1,10 +1,10 @@
-import NavBar from '../components/NavBar'
+
+
 
 const Projects = () => {
   return (
     <div>
-        <NavBar />
-        <h2>Projetos</h2>
+      <h1>Detalhes do projeto</h1>
     </div>
   )
 }

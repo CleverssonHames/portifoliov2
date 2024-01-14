@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Russo One', sans-serif;
   font-synthesis: none;
 }
 
@@ -13,15 +13,18 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #494949;
-  height: 100vh;
-}
 
 .active {
   border-bottom: 1px solid #2E8EFF !important;
   color: #2E8EFF;
   padding: 15px 0 ;
 }
+
+
+
+
+
+
+
 
 
