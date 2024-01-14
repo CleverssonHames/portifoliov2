@@ -8,7 +8,10 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaWhatsapp  } from "react-icons/fa";
 
 
-
+interface Contato {
+  nome: string;
+  mensagem: string;
+}
 
 
 const Home = () => {
@@ -66,12 +69,12 @@ const Home = () => {
           </motion.div> 
         </div>
         <div className="flex flex-col  justify-between  bg-white w-full items-center px-4 py-14 contatos">
-          <div className="flex justify-center gap-4 items-center mt-5">
-            <Link to="" className="hover:scale-105 text-center"><BsLinkedin size={40} color="white"/></Link>
-            <Link to="" className="hover:scale-105 text-center" ><BsGithub size={40} color="white"/></Link>
-            <Link to="" className="hover:scale-105 text-center" ><FaWhatsapp size={40} color="white"/></Link>
+          <h2 className="text-4xl mt-2">CONTATO</h2>
+          <div className="flex justify-center gap-4 items-center mt-4">
+            <Link to="" className="hover:scale-105 text-center"><BsLinkedin size={40} color="black"/></Link>
+            <Link to="" className="hover:scale-105 text-center" ><BsGithub size={40} color="black"/></Link>
+            <Link to="" className="hover:scale-105 text-center" ><FaWhatsapp size={40} color="black"/></Link>
           </div>
-          <h2 className="text-4xl">CONTATO</h2>
           <form className="w-3/4 mt-5">
             <div className="flex flex-col w-full">
               <label className="w-full">Nome:</label>
