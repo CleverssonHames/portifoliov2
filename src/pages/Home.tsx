@@ -4,9 +4,13 @@ import {motion} from "framer-motion";
 
 import CardProjeto from "../components/CardProjetos";
 
-import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsConeStriped, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaWhatsapp  } from "react-icons/fa";
 
+import {listaProjetos} from "../Data/Projetos.json"
+
+import {jett} from '../assets/img/jett-natal.jpg'
+}
 
 
 
@@ -19,18 +23,19 @@ interface Contato {
 const Home = () => {
   const carousel = useRef();
   const [width, setWidth] = useState(0)
+  const [projetos] = useState(listaProjetos)
+
 
   // atualizar as dimensões da tela
   useEffect(() => {
     setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth )
-    console.log(width)
   }, [])
 
 
   return (
     <div className=" bg-black">
       <section id="home" className="flex justify-center relative w-full">
-        <motion.img initial={{opacity: 0}} animate={{opacity: 2}} transition={{duration: 1}} src="perfil 1.png" alt="Imagem com um rosto" className="mix-blend-hard-light h-screen  max-w-full"/>
+        <motion.img initial={{opacity: 0}} animate={{opacity: 5}} transition={{duration: 2}} src="perfil 1.png" alt="Imagem com um rosto" className="mix-blend-hard-light h-screen  max-w-full"/>
         <div className="absolute top-0 w-full h-full ">
           <div className="flex flex-col items-center justify-between  text-white w-full h-full">
             <h1 className="text-5xl tracking-[.18em] mt-10 text-center">CLEV<span className="text-bluetec">DEV</span></h1>
@@ -47,27 +52,25 @@ const Home = () => {
         </div>
       </section>
       <section id="sobre" className="flex flex-col w-full items-center">
-        <div className="flex justify-center bg-white py-8 bg-about-image bg-cover">
+        <div className="flex justify-center bg-white py-8 bg-about-image bg-cover bg-fixed">
           <div className="flex flex-col-reverse items-center gap-6 w-3/4 ">
-            <motion.div initial={{x: -200}} animate={{x: 0}} transition={{duration: 1}} className="flex flex-col w-full items-center h-full ">
+            <motion.div initial={{x: -100}} animate={{x: 0}} transition={{duration: 1}} className="flex flex-col w-full items-center h-full ">
               <h2 className="text-4xl ">OBJETIVO</h2>
-              <p className="w-full text-3xl mt-2 text-center text-justify"><em className="text-bluetec text-4xl">M</em>eu objetivo é contribuir significativamente para o desenvolvimento de projetos inovadores. Quero fazer parte de equipes que compartilhem uma visão audaciosa e trabalhem incansavelmente para transformar ideias em produtos digitais impactantes. Estou preparado para assumir responsabilidades desafiadoras e colaborar ativamente no ciclo completo de desenvolvimento de software..</p>
+              <p className="w-full text-3xl mt-2  text-justify"><em className="text-bluetec text-4xl">M</em>eu objetivo é contribuir significativamente para o desenvolvimento de projetos inovadores. Quero fazer parte de equipes que compartilhem uma visão audaciosa e trabalhem incansavelmente para transformar ideias em produtos digitais impactantes. Estou preparado para assumir responsabilidades desafiadoras e colaborar ativamente no ciclo completo de desenvolvimento de software..</p>
             </motion.div>
-            <motion.div initial={{x: -200}} animate={{x: 0}} transition={{duration: 1}} className="flex flex-col w-full items-center h-full">
+            <motion.div initial={{x: -100}} animate={{x: 0}} transition={{duration: 1}} className="flex flex-col w-full items-center h-full">
               <h2 className="text-4xl mt-4">SOBRE</h2>
-              <p className="w-full text-3xl mt-2 text-center text-justify"><em className="text-bluetec text-4xl">E</em>stou animado para explorar novas oportunidades e contribuir para projetos desafiadores. Se você está em busca de um desenvolvedor apaixonado e comprometido, estou pronto para fazer parte da sua equipe. Entre em contato para discutir como podemos transformar suas ideias em realidade digital.</p>
+              <p className="w-full text-3xl mt-2  text-justify"><em className="text-bluetec text-4xl">E</em>stou animado para explorar novas oportunidades e contribuir para projetos desafiadores. Se você está em busca de um desenvolvedor apaixonado e comprometido, estou pronto para fazer parte da sua equipe. Entre em contato para discutir como podemos transformar suas ideias em realidade digital.</p>
             </motion.div>
           </div>
         </div>  
         <div className="flex flex-col justify-between w-full  items-center mt-5 px-6 py-5 text-white projetos">
           <h2 className="text-4xl mb-5">PROJETOS</h2>
           <motion.div ref={carousel} className="flex gap-x-5 w-2/3 overflow-hidden p-5 cursor-grab" whileTap={{cursor: "grabbing"}}>
-            <motion.div className="flex gap-x-5" drag="x" dragConstraints={{right: 0, left: -width}}>
-              <CardProjeto />
-              <CardProjeto />
-              <CardProjeto />
-              <CardProjeto />
-              <CardProjeto />
+            <motion.div className="flex justify-center gap-x-5" drag="x" dragConstraints={{right: 0, left: -width}}>
+              {projetos.map((project) => (
+                <CardProjeto key={project.id}  proj={project}/>
+              ))}
             </motion.div>
           </motion.div> 
         </div>
@@ -88,7 +91,7 @@ const Home = () => {
             <button type="submit" className="float-right mt-4 border-2 p-2 border-black rounded hover:bg-bluetec hover:text-white hover:border-bluetec">ENVIAR</button>
           </form>
         </div>
-        <div className="flex flex-col h-9 w-full justify-center items-center mt-5 py-14 text-white ">
+        <div className="flex flex-col h-9 w-full justify-center items-center mt-5 py-14 text-white">
           <p className="text-center">copyrigth 2023 - Todos os diretios reservados CLEVDEV</p>
         </div>
       </section>
