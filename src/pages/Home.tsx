@@ -1,20 +1,17 @@
+import {ChangeEvent, React} from 'react';
+
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom"
-import {motion} from "framer-motion";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import CardProjeto from "../components/CardProjetos";
 
-import { BsConeStriped, BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaWhatsapp  } from "react-icons/fa";
 
-import {listaProjetos} from "../Data/Projetos.json"
+import {listaProjetos} from "../Data/Projetos.json";
 
-import {jett} from '../assets/img/jett-natal.jpg'
-}
-
-
-
-interface Contato {
+type Contato = {
   nome: string;
   mensagem: string;
 }
@@ -22,8 +19,25 @@ interface Contato {
 
 const Home = () => {
   const carousel = useRef();
-  const [width, setWidth] = useState(0)
-  const [projetos] = useState(listaProjetos)
+  const [width, setWidth] = useState(0);
+  const [projetos] = useState(listaProjetos);
+  const [nome, setNome] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  const anoAtual: Date = new Date();
+  const [ano ]= useState(anoAtual.getFullYear());
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    
+    if (e.target.name === 'nome') {
+      setNome(e.target.value)
+    } else {
+      setMensagem(e.target.value)
+    }
+
+    
+    console.log(nome, mensagem)
+  }
 
 
   // atualizar as dimensões da tela
@@ -44,7 +58,6 @@ const Home = () => {
               <h5 className="text-2xl text-center">Desenvolvedor de <span className="text-bluetec">software</span></h5>
               <div className="flex justify-center gap-4 items-center mt-5">
                 <Link to="" className="hover:scale-105 text-center"><BsLinkedin size={40} color="white"/></Link>
-                <Link to="" className="hover:scale-105 text-center" ><BsGithub size={40} color="white"/></Link>
                 <Link to="" className="hover:scale-105 text-center" ><FaWhatsapp size={40} color="white"/></Link>
               </div>
             </div>
@@ -66,6 +79,9 @@ const Home = () => {
         </div>  
         <div className="flex flex-col justify-between w-full  items-center mt-5 px-6 py-5 text-white projetos">
           <h2 className="text-4xl mb-5">PROJETOS</h2>
+          <div className='flex justify-center items-center my-4'>
+            <Link to="" className="hover:scale-105 text-center" ><BsGithub size={40} color="white"/></Link>
+          </div>
           <motion.div ref={carousel} className="flex gap-x-5 w-2/3 overflow-hidden p-5 cursor-grab" whileTap={{cursor: "grabbing"}}>
             <motion.div className="flex justify-center gap-x-5" drag="x" dragConstraints={{right: 0, left: -width}}>
               {projetos.map((project) => (
@@ -78,21 +94,20 @@ const Home = () => {
           <h2 className="text-4xl mt-2">CONTATO</h2>
           <div className="flex justify-center gap-4 items-center mt-4">
             <Link to="" className="hover:scale-105 text-center"><BsLinkedin size={40} color="black"/></Link>
-            <Link to="" className="hover:scale-105 text-center" ><BsGithub size={40} color="black"/></Link>
             <Link to="" className="hover:scale-105 text-center" ><FaWhatsapp size={40} color="black"/></Link>
           </div>
           <form className="w-3/4 mt-5">
             <div className="flex flex-col w-full">
               <label className="w-full">Nome:</label>
-              <input type="text"  className="border-2 border-black w-full p-2" placeholder="Informe seu nome ou como gostaria que eu chamasse você :D"/>
+              <input type="text" onChange={handleChange}  className="border-2 border-black w-full p-2" placeholder="Informe seu nome ou como gostaria que eu chamasse você :D"/>
               <label>Descrição do motivo do contato:</label>
-              <textarea name="" id="" cols={15} rows={10} className="border-2 border-black p-2" placeholder="descreva o motivo do contato e lembrebe-se de deixar seu contato para retorno"></textarea>
+              <textarea name="mensagem"  cols={15} rows={10} onChange={handleChange} className="border-2 border-black p-2" placeholder="descreva o motivo do contato e lembrebe-se de deixar seu contato para retorno"></textarea>
             </div>
             <button type="submit" className="float-right mt-4 border-2 p-2 border-black rounded hover:bg-bluetec hover:text-white hover:border-bluetec">ENVIAR</button>
           </form>
         </div>
         <div className="flex flex-col h-9 w-full justify-center items-center mt-5 py-14 text-white">
-          <p className="text-center">copyrigth 2023 - Todos os diretios reservados CLEVDEV</p>
+          <p className="text-center">copyrigth {ano} - Todos os diretios reservados CLEVDEV</p>
         </div>
       </section>
 

@@ -4,25 +4,25 @@
             "id": 1,
             "nome": "Jogo da velha",
             "Descricao": "Esse jogo foi o primeiro projeto feito durante o curso de react",
-            "linkImagem": "../assets/img/jett-natal.jpg"
+            "linkImagem": "jett-natal.jpg"
         },
         {
             "id": 2,
             "nome": "Jogo da velha",
             "Descricao": "Esse jogo foi o primeiro projeto feito durante o curso de react",
-            "linkImagem": "/assets/img/jett-natal.jpg"
+            "linkImagem": "jett-natal.jpg"
         },
         {
             "id": 3,
             "nome": "Jogo da velha",
             "Descricao": "Esse jogo foi o primeiro projeto feito durante o curso de react",
-            "linkImagem": "../assets/img/jett-natal.jpg"
+            "linkImagem": "jett-natal.jpg"
         },
         {
             "id": 5,
             "nome": "Jogo da velha",
             "Descricao": "Esse jogo foi o primeiro projeto feito durante o curso de react",
-            "linkImagem": "../assets/img/jett-natal.jpg"
+            "linkImagem": "jett-natal.jpg"
         }
     ]
        
